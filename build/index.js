@@ -103,7 +103,7 @@
         }
     };
     function ngVueLinker(componentName, jqElement, elAttributes, scope, $injector) {
-        var attributes, $ngVue = $injector.has("$ngVue") ? $injector.get("$ngVue") : null, $compile = $injector.get("$compile"), dataExprsMap = {
+        var attributes, _this = this, _arguments = arguments, $ngVue = $injector.has("$ngVue") ? $injector.get("$ngVue") : null, $compile = $injector.get("$compile"), dataExprsMap = {
             data: extractExpressions("data", attributes = elAttributes),
             props: extractExpressions("props", attributes),
             events: extractExpressions("on", attributes)
@@ -146,7 +146,13 @@
                 slot.parentNode.replaceChild(html[0], slot);
             }
             angular__default.isFunction(mounted) && mounted.apply(this, arguments);
-        };
+        }, elAttributes.renderSlot && setTimeout(function() {
+            if (jqElement[0].innerHTML.trim()) {
+                var html = $compile(jqElement[0].innerHTML)(scope), slot = _this.$refs.__slot__;
+                slot.parentNode.replaceChild(html[0], slot);
+            }
+            angular__default.isFunction(mounted) && mounted.apply(_this, _arguments);
+        }, 500);
         var vuexStore = $ngVue ? {
             store: $ngVue.getVuexStore()
         } : {}, watchOptions = {

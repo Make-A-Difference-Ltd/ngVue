@@ -32,17 +32,17 @@ export function ngVueLinker (componentName, jqElement, elAttributes, scope, $inj
     }
   }
 
-  if(elAttributes.renderSlot){
+  if (elAttributes.renderSlot) {
     setTimeout(() => {
-        if (jqElement[0].innerHTML.trim()) {
-            const html = $compile(jqElement[0].innerHTML)(scope)
-            const slot = this.$refs.__slot__
-            slot.parentNode.replaceChild(html[0], slot)
-        }
-        if (angular.isFunction(mounted)) {
-            mounted.apply(this, arguments)
-        }
-    },500);
+      if (jqElement[0].innerHTML.trim()) {
+        const html = $compile(jqElement[0].innerHTML)(scope)
+        const slot = this.$refs.__slot__
+        slot.parentNode.replaceChild(html[0], slot)
+      }
+      if (angular.isFunction(mounted)) {
+        mounted.apply(this, arguments)
+      }
+    }, 500)
   }
 
   const vuexStore = $ngVue ? {store: $ngVue.getVuexStore()} : {}
