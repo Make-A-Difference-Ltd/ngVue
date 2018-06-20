@@ -37,6 +37,7 @@ export function ngVueLinker (componentName, jqElement, elAttributes, scope, $inj
       if (jqElement[0].innerHTML.trim()) {
         const html = $compile(jqElement[0].innerHTML)(scope)
         const slot = this.$refs.__slot__
+          console.log('applying updated slot', html[0]);
         slot.parentNode.replaceChild(html[0], slot)
       }
       if (angular.isFunction(mounted)) {

@@ -23,7 +23,8 @@
     "preversion": "npm run test",
     "prepublish": "npm run build"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "angular": "^1.6.8",
     "angular-mocks": "^1.6.4",
@@ -47,7 +48,6 @@
     "eslint-plugin-react": "^7.0.1",
     "eslint-plugin-standard": "^3.0.1",
     "file-loader": "^0.11.1",
-    "jest": "^20.0.4",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
